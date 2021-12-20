@@ -10,6 +10,7 @@ from metaclass import DocMeta
 
 
 class Server(Proto, metaclass=DocMeta):
+
     listen_ip = HostPortDescriptor()
     listen_port = HostPortDescriptor()
 

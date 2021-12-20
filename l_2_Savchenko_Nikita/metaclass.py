@@ -1,4 +1,5 @@
 class DocMeta(type):
+
     def __init__(self, clsname, bases, clsdict):
         for key, value in clsdict.items():
             if key.startswith("__"): continue
