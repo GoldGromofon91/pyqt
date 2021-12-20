@@ -39,13 +39,11 @@ class Proto:
 
         return config[self.environment_for_settings]
 
-
     def send_message(self, open_socket, message, encoding):
         """:отправка сообщения
         """
         request = json.dumps(message)
         open_socket.send(request.encode(encoding))
-
 
     def get_message(self, open_socket, max_package_lenght, encoding):
         """:получение и дукодирование сообщения

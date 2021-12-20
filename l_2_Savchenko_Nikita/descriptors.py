@@ -1,7 +1,7 @@
 import subprocess
 
-class HostPortDescriptor:
 
+class HostPortDescriptor:
     def __set__(self, instance, value):
         if self.new_attr == 'listen_ip':
             proc = subprocess.call(f'ping -W 500 -c 1 {value}',
