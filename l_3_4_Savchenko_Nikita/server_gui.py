@@ -169,7 +169,7 @@ class ConfigWindow(QDialog):
         # Поле для ввода имени файла
         self.db_file = QLineEdit(self)
         self.db_file.move(200, 66)
-        self.db_file.setFixedSize(150 , 20)
+        self.db_file.setFixedSize(150, 20)
 
         # Метка с номером порта
         self.port_label = QLabel('Номер порта для соединений:', self)
@@ -197,8 +197,8 @@ class ConfigWindow(QDialog):
         self.ip.setFixedSize(150, 20)
 
         # Кнопка сохранения настроек
-        self.save_btn = QPushButton('Сохранить' , self)
-        self.save_btn.move(190 , 220)
+        self.save_btn = QPushButton('Сохранить', self)
+        self.save_btn.move(190, 220)
 
         # Кнапка закрытия окна
         self.close_button = QPushButton('Закрыть', self)
@@ -209,7 +209,6 @@ class ConfigWindow(QDialog):
 
 
 if __name__ == '__main__':
-
     app = QApplication(sys.argv)
     message = QMessageBox
     dial = ConfigWindow()

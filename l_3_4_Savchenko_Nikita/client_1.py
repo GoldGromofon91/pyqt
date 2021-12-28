@@ -13,8 +13,8 @@ from client_db import ClientDatabase
 import os
 import sys
 
-class Client(Proto, metaclass=DocMeta):
 
+class Client(Proto, metaclass=DocMeta):
     name = os.path.basename(sys.argv[0]).split('.')[0]
     database = ClientDatabase(name)
 
@@ -54,7 +54,7 @@ class Client(Proto, metaclass=DocMeta):
             self.config['ACTION']: actions.PRESENCE,
             self.config['TIME']: time.ctime(time.time()),
             self.config['USER']: {
-            self.config['ACCOUNT_NAME']: account_name
+                self.config['ACCOUNT_NAME']: account_name
             }
         }
         self.logger.info(f'Сформировано presence сообщение')
@@ -83,7 +83,7 @@ class Client(Proto, metaclass=DocMeta):
                 return '200'
             if responce[self.config['RESPONSE']] == 400:
                 self.logger.error(f'От сервера пришел ответ - 400 \n'
-                             f'{responce}')
+                                  f'{responce}')
                 return '400'
         raise ValueError
 

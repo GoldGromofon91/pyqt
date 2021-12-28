@@ -2,6 +2,7 @@ import datetime
 from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData, ForeignKey, DateTime, Text
 from sqlalchemy.orm import mapper, sessionmaker
 
+
 class AllUsers:
     def __init__(self, username):
         self.name = username
@@ -26,6 +27,7 @@ class LoginHistory:
         self.ip = ip
         self.port = port
 
+
 # Класс отображение таблицы истории действий
 class MessageHistory:
     def __init__(self, user, message):
@@ -34,9 +36,11 @@ class MessageHistory:
         self.data = datetime.datetime.now()
         self.id = None
 
+
 class ServerStorage:
     def __init__(self):
-        self.database_engine = create_engine('sqlite:///bd_server.db3?check_same_thread=False', echo=False, pool_recycle=7200)
+        self.database_engine = create_engine('sqlite:///bd_server.db3?check_same_thread=False', echo=False,
+                                             pool_recycle=7200)
 
         self.metadata = MetaData()
 
@@ -67,10 +71,10 @@ class ServerStorage:
 
         # Создаём таблицу истории пользователей
         massage_history_table = Table('History', self.metadata,
-                                    Column('id', Integer, primary_key=True),
-                                    Column('user', ForeignKey('Users.id')),
-                                    Column('message', Text),
-                                    Column('data', DateTime))
+                                      Column('id', Integer, primary_key=True),
+                                      Column('user', ForeignKey('Users.id')),
+                                      Column('message', Text),
+                                      Column('data', DateTime))
 
         # Создаём таблицы
         self.metadata.create_all(self.database_engine)
@@ -156,10 +160,10 @@ class ServerStorage:
         # Возвращаем список кортежей
         return query.all()
 
+
 if __name__ == '__main__':
     test_db = ServerStorage()
     test_db.user_login('client_1', '192.168.1.4', 7666)
     test_db.write_message_history('client_1', 'mes')
     # test_db.user_logout('client_1')
-    print(test_db.message_history())
-
+    # print(test_db.message_history())

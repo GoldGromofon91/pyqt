@@ -16,7 +16,9 @@ class MessageHistory:
 class ClientDatabase():
     # Конструктор класса:
     def __init__(self, name):
-        self.database_engine = create_engine(f'sqlite:///client_{name}.db3?check_same_thread=False', echo=False, pool_recycle=7200,
+        self.database_engine = create_engine(f'sqlite:///client_{name}.db3?check_same_thread=False',
+                                             echo=False,
+                                             pool_recycle=7200,
                                              connect_args={'check_same_thread': False})
 
         # Создаём объект MetaData
@@ -58,6 +60,7 @@ class ClientDatabase():
             query = query.filter_by(to_user=to_who)
         return [(history_row.from_user, history_row.to_user, history_row.message, history_row.date)
                 for history_row in query.all()]
+
 
 if __name__ == '__main__':
     test_db = ClientDatabase('test1')

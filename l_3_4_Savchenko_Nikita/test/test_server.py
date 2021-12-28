@@ -6,6 +6,7 @@ import time
 server = Server()
 server.load_settings()
 
+
 class TestServer(unittest.TestCase):
     def test_create_presence_responce_200(self):
         account_name = 'test account'
@@ -29,8 +30,9 @@ class TestServer(unittest.TestCase):
 
         self.assertEqual(server.create_presence_responce(message),
                          {server.config['RESPONSE']: status_code.BAD_REQUEST,
-                             server.config['ERROR']: 'Bad Request'},
+                          server.config['ERROR']: 'Bad Request'},
                          'test_create_presence_responce_400')
+
 
 if __name__ == '__main__':
     unittest.main()
